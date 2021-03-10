@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  TrivaApp
-//
-//  Created by TJ mcintire on 3/4/21.
-//
+
 
 import UIKit
 
