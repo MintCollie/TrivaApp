@@ -32,43 +32,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        getJson { (json) in
-            print("finished")
-        }
-        dispatchGroup.notify(queue: .main) {
-            print("all finished")
-        }
-//        if let url = URL(string: urlString)
-//            {
-//                URLSession.shared.dataTask(with: url) {data, res, err in
-//                    if let data = data {
-//                        print("hey")
-//
-//                        let decoder = JSONDecoder()
-//                        if let json = try? decoder.decode(Response.self, from: data){
-//                            print(json)
-//                        }
-//                    }
-//                }.resume()
-//                print("finished")
-//        }
         
-    }
-    
-    func getJson(completion: @escaping (Response) -> ()) {
-        dispatchGroup.enter()
-        if  let url = URL(string: urlString)
-        {
-            URLSession.shared.dataTask(with: url) {data, res, err in
-                if let data = data {
-                    let decoder = JSONDecoder()
-                    if let json = try? decoder.decode(Response.self, from: data) {
-                        self.dispatchGroup.leave()
-                        completion(json)
+        if let url = URL(string: urlString)
+            {
+                URLSession.shared.dataTask(with: url) {data, res, err in
+                    if let data = data {
+                        let decoder = JSONDecoder()
+                        if let json = try? decoder.decode(Response.self, from: data){
+                            print(json)
+                            print(json.results[0].category)
+                            print(json.results[0].question)
+                            self.questionText.text = json.results[0].question
+                        }
                     }
-                }
-            }.resume()
+                }.resume()
         }
     }
 }
