@@ -26,13 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var questionText: UILabel!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
-    
-    let dispatchGroup = DispatchGroup()
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @IBAction func retryButton(_ sender: Any) {
         if let url = URL(string: urlString)
             {
                 URLSession.shared.dataTask(with: url) {data, res, err in
@@ -42,10 +36,20 @@ class ViewController: UIViewController {
                             print(json)
                             print(json.results[0].category)
                             print(json.results[0].question)
-                            self.questionText.text = json.results[0].question
+                            let jsonResponse = json.results[0].question
+                            self.questionText.text = jsonResponse
                         }
                     }
                 }.resume()
+    }
+    
+   // let dispatchGroup = DispatchGroup()
+
+    
+        func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
         }
     }
 }
