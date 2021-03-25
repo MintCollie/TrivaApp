@@ -8,21 +8,9 @@
 import SwiftUI
 
 
-//begin of json response output continues to struct below
-struct Response: Codable {
-    let response_code: Int
-    let results: Array<MyResults>
-}
 
-// second part of json response with actual responces
-struct MyResults: Codable {
-    let category: String
-    let type: String
-    let difficulty: String
-    let question: String
-    let correct_answer: String
-    let incorrect_answers: Array<String>
-}
+
+
 let urlString = "https://opentdb.com/api.php?amount=1&type=boolean"
 
 // first working json request call

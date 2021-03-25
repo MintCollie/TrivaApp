@@ -12,6 +12,8 @@
 		B005843C26082505008B6F01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B005843B26082505008B6F01 /* Assets.xcassets */; };
 		B005843F26082505008B6F01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B005843E26082505008B6F01 /* Preview Assets.xcassets */; };
 		B0DDB9C1260C1AB600F16C2F /* NewQuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DDB9C0260C1AB600F16C2F /* NewQuestionButton.swift */; };
+		B0DDB9ED260C73BE00F16C2F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DDB9EC260C73BD00F16C2F /* Response.swift */; };
+		B0DDB9F0260C73EB00F16C2F /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DDB9EF260C73EB00F16C2F /* Questions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		B005843E26082505008B6F01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B005844026082505008B6F01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DDB9C0260C1AB600F16C2F /* NewQuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuestionButton.swift; sourceTree = "<group>"; };
+		B0DDB9EC260C73BD00F16C2F /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		B0DDB9EF260C73EB00F16C2F /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				B005843726082503008B6F01 /* TriviaAppSwiftUIApp.swift */,
 				B005843926082503008B6F01 /* ContentView.swift */,
 				B0DDB9C0260C1AB600F16C2F /* NewQuestionButton.swift */,
+				B0DDB9EF260C73EB00F16C2F /* Questions.swift */,
+				B0DDB9EC260C73BD00F16C2F /* Response.swift */,
 				B005843B26082505008B6F01 /* Assets.xcassets */,
 				B005844026082505008B6F01 /* Info.plist */,
 				B005843D26082505008B6F01 /* Preview Content */,
@@ -141,8 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0DDB9ED260C73BE00F16C2F /* Response.swift in Sources */,
 				B005843A26082503008B6F01 /* ContentView.swift in Sources */,
 				B005843826082503008B6F01 /* TriviaAppSwiftUIApp.swift in Sources */,
+				B0DDB9F0260C73EB00F16C2F /* Questions.swift in Sources */,
 				B0DDB9C1260C1AB600F16C2F /* NewQuestionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
