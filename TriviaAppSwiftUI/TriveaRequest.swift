@@ -1,11 +1,11 @@
 //
-//  ViewController.swift
-//  TrivaApp
+//  TriveaRequest.swift
+//  TriviaAppSwiftUI
 //
-//  Created by TJ mcintire on 3/4/21.
+//  Created by TJ mcintire on 3/24/21.
 //
 
-import UIKit
+import SwiftUI
 
 struct Response: Codable {
     let response_code: Int
@@ -22,34 +22,30 @@ struct MyResults: Codable {
 }
 let urlString = "https://opentdb.com/api.php?amount=1&type=boolean"
 
-class ViewController: UIViewController {
-    @IBOutlet weak var questionText: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
-    @IBAction func retryButton(_ sender: Any) {
-        if let url = URL(string: urlString)
+struct TriveaRequest: View {
+    var body: some View {
+        VStack {
+            Button(action: { if let url = URL(string: urlString)
             {
                 URLSession.shared.dataTask(with: url) {data, res, err in
                     if let data = data {
                         let decoder = JSONDecoder()
                         if let json = try? decoder.decode(Response.self, from: data){
-                            print(json)
+                            //print(json)
                             print(json.results[0].category)
                             print(json.results[0].question)
-                            let jsonResponse = json.results[0].question
-                            self.questionText.text = jsonResponse
-                        }
+                            }
                     }
-                }.resume()
-    }
-    
-   // let dispatchGroup = DispatchGroup()
-
-    
-        func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
+                    }.resume()
+        }}) {
+                Text("New Question")
+            }
         }
+    }
+}
+
+struct TriveaRequest_Previews: PreviewProvider {
+    static var previews: some View {
+        TriveaRequest()
     }
 }
