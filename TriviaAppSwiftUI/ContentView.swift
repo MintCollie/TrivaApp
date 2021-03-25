@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var fetch = FetchToDo()
     var body: some View {
         VStack {
             HStack{
-                TriveaRequest()
+                TriveaRequestButton()
             }
-            Text(TriveaRequest())
+            List(fetch.todos) { todo in
+                          VStack(alignment: .leading) {
+                            //Text(todo.)
+                              Text("\(todo.completed.description)") // print boolean
+                                  .font(.system(size: 11))
+                                  .foregroundColor(Color.gray)
+                          }
+                      }
+            Text("test")
                 .multilineTextAlignment(.center)
                 .padding()
             HStack{
