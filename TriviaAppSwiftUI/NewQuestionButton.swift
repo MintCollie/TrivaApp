@@ -8,15 +8,12 @@
 import SwiftUI
 
 
-
-
-
 let urlString = "https://opentdb.com/api.php?amount=1&type=boolean"
 
-// first working json request call
 struct TriveaRequestButton: View {
     var body: some View {
         VStack {
+            // first working json request call
             Button(action: { if let url = URL(string: urlString)
             {
                 URLSession.shared.dataTask(with: url) {data, res, err in
@@ -30,8 +27,13 @@ struct TriveaRequestButton: View {
                     }
                     }.resume()
         }}) {
-                Text("test")
+                Text("new question")
             }
+            
+            Text("Hello world!")
+                .onAppear(perform: {
+                    api().getResponses()
+                })
         }
     }
 }
