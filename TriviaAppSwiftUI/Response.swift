@@ -24,12 +24,15 @@ struct MyResults: Codable {
 }
 
 class api {
-    func getResponses(){
+    func getResponses(completion: @escaping (Response) -> ()){
         guard let url = URL(string: "https://opentdb.com/api.php?amount=1&type=boolean") else {return}
         
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             let requests = try! JSONDecoder().decode(Response.self, from: data!)
-            print(requests)
+            print(requests.results[0].category)
+            DispatchQueue.main.async {
+                completion(requests)
+            }
         }
         .resume()
     }
