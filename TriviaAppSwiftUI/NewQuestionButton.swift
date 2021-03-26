@@ -11,11 +11,15 @@ import SwiftUI
 let urlString = "https://opentdb.com/api.php?amount=1&type=boolean"
 
 struct TriveaRequestButton: View {
+    
+    @State var requests: [Response] = []
+    
     var body: some View {
         VStack {
-            // first working json request call
+            //button that processes api request
             Button(action: { if let url = URL(string: urlString)
             {
+                // first working json request call
                 URLSession.shared.dataTask(with: url) {data, res, err in
                     if let data = data {
                         let decoder = JSONDecoder()
@@ -32,55 +36,13 @@ struct TriveaRequestButton: View {
             
             Text("Hello world!")
                 .onAppear(perform: {
-                    api().getResponses()
+                    api().getResponses() { (requests) in
+                        self.requests = requests
+                    }
                 })
         }
     }
 }
-
-//second json request try, not working
-//class apiCall {
-//    func getUsers(completion:@escaping ([Response]) -> ()) {
-//        guard let url = URL(string: "https://opentdb.com/api.php?amount=1&type=boolean") else { return }
-//        URLSession.shared.dataTask(with: url) { (data, _, _) in
-//            let users = try! JSONDecoder().decode([Response].self, from: data!)
-//            print(users)
-//
-//            DispatchQueue.main.async {
-//                completion(users)
-//            }
-//        }
-//        .resume()
-//    }
-//}
-
-
-//class FetchToDo: ObservableObject {
-//  // 1.
-//  @Published var todos = [Response]()
-//
-//    init() {
-//        let url = URL(string: "https://opentdb.com/api.php?amount=1&type=boolean")!
-//        // 2.
-//        URLSession.shared.dataTask(with: url) {(data, response, error) in
-//            do {
-//                if let todoData = data {
-//                    // 3.
-//                    let decodedData = try JSONDecoder().decode([Response].self, from: todoData)
-//                    DispatchQueue.main.async {
-//                        self.todos = decodedData
-//                    }
-//                } else {
-//                    print("No data")
-//                }
-//            } catch {
-//                print("Error")
-//            }
-//        }.resume()
-//    }
-//}
-
-
 
 struct TriveaRequest_Previews: PreviewProvider {
     static var previews: some View {
