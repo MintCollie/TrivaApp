@@ -16,32 +16,18 @@ struct TriveaRequestButton: View {
     
     var body: some View {
         VStack {
-            //button that processes api request
-//            Button(action: { if let url = URL(string: urlString)
-//            {
-//                // first working json request call
-//                URLSession.shared.dataTask(with: url) {data, res, err in
-//                    if let data = data {
-//                        let decoder = JSONDecoder()
-//                        if let json = try? decoder.decode(Response.self, from: data){
-//                            //print(json)
-//                            print(json.results[0].category)  //prints out the catgeory of the current json call
-//                            print(json.results[0].question) //prints out the question of the current json call
-//                            }
-//                    }
-//                    }.resume()
-//        }}) {
-//                Text("new question")
-//            }
+            List (response){ MyResults in
             
-            Text(response[0].question)
-                .onAppear(perform: {
-                    api().getResponses { (response) in
-                        self.response = response.results
-                    }
-                })
+                Text(MyResults.question)
+                
         }
+        .onAppear(perform: {
+            api().getResponses { (response) in
+                self.response = response
+            }
+        })
     }
+}
 }
 
 struct TriveaRequest_Previews: PreviewProvider {

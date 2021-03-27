@@ -14,7 +14,8 @@ struct Response: Codable {
 }
 
 // second part of json response with actual responces
-struct MyResults: Codable {
+struct MyResults: Codable, Identifiable {
+    let id = UUID()
     let category: String
     let type: String
     let difficulty: String
@@ -24,14 +25,14 @@ struct MyResults: Codable {
 }
 
 class api {
-    func getResponses(completion: @escaping (Response) -> ()){
+    func getResponses(completion: @escaping ([MyResults]) -> ()){
         guard let url = URL(string: "https://opentdb.com/api.php?amount=1&type=boolean") else {return}
         
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
+        URLSession.shared.dataTask(with: url) { (data, res, err) in
             let requests = try! JSONDecoder().decode(Response.self, from: data!)
-            print(requests.results[0].category)
+            print(requests)
             DispatchQueue.main.async {
-                completion(requests)
+                completion(requests.results)
             }
         }
         .resume()
